@@ -51,8 +51,8 @@ inquirer.prompt(questions).then((answers) => {
 			console.log(chalk.cyan(`-> cd ${answers.projectName} \n`));
 		}
 
-		console.log(chalk.yellow("-> yarn OR npm install\n"));
-		console.log(chalk.blue("-> yarn dev OR npm run dev \n"));
+		console.log(chalk.yellow(" -> yarn OR npm install\n"));
+		console.log(chalk.blue(" -> yarn dev OR npm run dev \n"));
 		console.log(chalk.green("!! Enjoy !! \n"));
 	};
 
