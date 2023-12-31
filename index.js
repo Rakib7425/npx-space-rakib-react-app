@@ -6,6 +6,8 @@ import { dirname, join } from "path";
 import inquirer from "inquirer";
 import chalk from "chalk";
 import fs from "fs";
+import { rimraf } from "rimraf";
+import util from "util";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -51,9 +53,13 @@ inquirer.prompt(questions).then((answers) => {
 			console.log(chalk.cyan(` 1-> cd ${answers.projectName} \n`));
 		}
 
-		console.log(chalk.yellow(" 2.1. Install dependencies with yarn:\n   \n \t yarn\n"));
 		console.log(
-			chalk.yellow(" 2.2. Start the development server with yarn:\n   \n \t yarn dev\n")
+			chalk.yellow(" 2.1. Install dependencies with yarn:(Recommended)\n   \n \t yarn\n")
+		);
+		console.log(
+			chalk.yellow(
+				" 2.2. Start the development server with yarn:(Recommended)\n   \n \t yarn dev\n"
+			)
 		);
 		console.log(chalk.bold("    OR\n"));
 		console.log(chalk.blue(" 3.1. Install dependencies with npm:\n   \n \t npm install\n"));
@@ -62,27 +68,41 @@ inquirer.prompt(questions).then((answers) => {
 			chalk.blue(" 3.2. Start the development server with npm:\n   \n \t npm run dev\n")
 		);
 		console.log(chalk.green(" !! Enjoy !! \n"));
-
-		// console.log(chalk.yellow(" 2.1-> yarn \n"));
-		// console.log(chalk.bold(" -> OR \n"));
-		// console.log(chalk.yellow(" 2.2-> npm install\n"));
-		// console.log(chalk.blue(" 3.1-> yarn dev \n"));
-		// console.log(chalk.bold(" ->  OR \n"));
-		// console.log(chalk.magenta(" 3.2-> npm run dev \n"));
-		// console.log(chalk.green(" !! Enjoy !! \n"));
+	};
+	// delete .git folder from user's directory
+	const deleteFolderRecursive = function (path) {
+		if (fs.existsSync(path)) {
+			fs.readdirSync(path).forEach(function (file, index) {
+				let curPath = path + "/" + file;
+				if (fs.lstatSync(curPath).isDirectory()) {
+					// recurse
+					deleteFolderRecursive(curPath);
+				} else {
+					// delete file
+					fs.unlinkSync(curPath);
+				}
+			});
+			fs.rmdirSync(path);
+		}
 	};
 
 	// Execute the Git clone command
 	exec(gitCloneCommand, (error, stdout, stderr) => {
 		if (error) {
 			console.error(chalk.red(`Error cloning repository: ${error?.message}`));
+
 			return;
 		}
 
 		if (stderr) {
-			// console.log(chalk.blue(`-> ${stderr}/${answers.projectName}`));
-			// If we reach this point, consider it a successful clone
+			const gitDirectoryPath = `${projectPath}/${answers.projectName}/.git`;
+			// delete .git folder from user's directory
+			deleteFolderRecursive(gitDirectoryPath);
+
+			// If we reach this point, consider it a successful
+			// Log success message
 			successFn();
+
 			return;
 		}
 
