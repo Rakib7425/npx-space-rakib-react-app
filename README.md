@@ -1,5 +1,11 @@
 # npx rakib-react-app
 
+#### Open your terminal and run the following command to create a new React app using `npx`:
+
+```bash
+    npx rakib-react-app
+```
+
 # Supercharge Your React Development: Introducing Rakib React app
 
 ## Introduction
