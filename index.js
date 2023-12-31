@@ -59,7 +59,7 @@ inquirer.prompt(questions).then((answers) => {
 	// Execute the Git clone command
 	exec(gitCloneCommand, (error, stdout, stderr) => {
 		if (error) {
-			console.error(chalk.red(`Error cloning repository: ${error.message}`));
+			console.error(chalk.red(`Error cloning repository: ${error?.message}`));
 			return;
 		}
 
