@@ -32,7 +32,7 @@ inquirer.prompt(questions).then((answers) => {
 
 	const gitRepositoryUrl = "https://github.com/Rakib7425/rakib-react-setup";
 
-	console.log("Fetching files...");
+	console.log(chalk.green("Fetching files...!"));
 
 	// Git clone command
 	const gitCloneCommand = `git clone ${gitRepositoryUrl} ${projectPath}/${answers.projectName}`;
@@ -48,12 +48,26 @@ inquirer.prompt(questions).then((answers) => {
 		);
 
 		if (answers.projectName !== ".") {
-			console.log(chalk.cyan(` -> cd ${answers.projectName} \n`));
+			console.log(chalk.cyan(` 1-> cd ${answers.projectName} \n`));
 		}
 
-		console.log(chalk.yellow(" -> yarn OR npm install\n"));
-		console.log(chalk.blue(" -> yarn dev OR npm run dev \n"));
-		console.log(chalk.green("!! Enjoy !! \n"));
+		console.log(chalk.yellow(" 2.1. Install dependencies with yarn:\n   yarn\n"));
+		console.log(chalk.bold("    OR\n"));
+		console.log(chalk.yellow(" 2.2. Install dependencies with npm:\n   npm install\n"));
+		console.log(chalk.blue(" 3.1. Start the development server with yarn:\n   yarn dev\n"));
+		console.log(chalk.bold("    OR\n"));
+		console.log(
+			chalk.magenta(" 3.2. Start the development server with npm:\n   npm run dev\n")
+		);
+		console.log(chalk.green(" !! Enjoy !! \n"));
+
+		// console.log(chalk.yellow(" 2.1-> yarn \n"));
+		// console.log(chalk.bold(" -> OR \n"));
+		// console.log(chalk.yellow(" 2.2-> npm install\n"));
+		// console.log(chalk.blue(" 3.1-> yarn dev \n"));
+		// console.log(chalk.bold(" ->  OR \n"));
+		// console.log(chalk.magenta(" 3.2-> npm run dev \n"));
+		// console.log(chalk.green(" !! Enjoy !! \n"));
 	};
 
 	// Execute the Git clone command
