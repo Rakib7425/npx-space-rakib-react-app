@@ -2,7 +2,7 @@
 
 #### Open your terminal and run the following command using `npx`:
 
-```bash
+```sh
     npx rakib-react-app
 ```
 
