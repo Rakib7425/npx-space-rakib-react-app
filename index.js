@@ -102,7 +102,6 @@ inquirer.prompt(questions).then((answers) => {
 			// If we reach this point, consider it a successful
 			// Log success message
 			successFn();
-
 			return;
 		}
 
