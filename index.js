@@ -51,13 +51,15 @@ inquirer.prompt(questions).then((answers) => {
 			console.log(chalk.cyan(` 1-> cd ${answers.projectName} \n`));
 		}
 
-		console.log(chalk.yellow(" 2.1. Install dependencies with yarn:\n   yarn\n"));
-		console.log(chalk.bold("    OR\n"));
-		console.log(chalk.yellow(" 2.2. Install dependencies with npm:\n   npm install\n"));
-		console.log(chalk.blue(" 3.1. Start the development server with yarn:\n   yarn dev\n"));
-		console.log(chalk.bold("    OR\n"));
+		console.log(chalk.yellow(" 2.1. Install dependencies with yarn:\n   \n \t yarn\n"));
 		console.log(
-			chalk.magenta(" 3.2. Start the development server with npm:\n   npm run dev\n")
+			chalk.yellow(" 2.2. Start the development server with yarn:\n   \n \t yarn dev\n")
+		);
+		console.log(chalk.bold("    OR\n"));
+		console.log(chalk.blue(" 3.1. Install dependencies with npm:\n   \n \t npm install\n"));
+
+		console.log(
+			chalk.blue(" 3.2. Start the development server with npm:\n   \n \t npm run dev\n")
 		);
 		console.log(chalk.green(" !! Enjoy !! \n"));
 
