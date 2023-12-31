@@ -48,7 +48,7 @@ inquirer.prompt(questions).then((answers) => {
 		);
 
 		if (answers.projectName !== ".") {
-			console.log(chalk.cyan(`-> cd ${answers.projectName} \n`));
+			console.log(chalk.cyan(` -> cd ${answers.projectName} \n`));
 		}
 
 		console.log(chalk.yellow(" -> yarn OR npm install\n"));
