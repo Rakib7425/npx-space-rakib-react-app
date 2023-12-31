@@ -6,8 +6,6 @@ import { dirname, join } from "path";
 import inquirer from "inquirer";
 import chalk from "chalk";
 import fs from "fs";
-import { rimraf } from "rimraf";
-import util from "util";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
