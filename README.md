@@ -50,7 +50,7 @@ Your installation instructions look clear and concise. However, if you'd like to
     npx rakib-react-app
     ```
 
-This command will initiate the setup process for your new React app.
+    This command will initiate the setup process for your new React app.
 
 2. Follow the prompts to give a name to your project and customize any other configuration options. For example:
 
