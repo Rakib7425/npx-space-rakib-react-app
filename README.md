@@ -34,13 +34,51 @@ Rakib React app provides an opinionated project structure while allowing flexibi
 
 Ensure you have Node.js and Git installed on your machine before getting started.
 
-### Installation
+Your installation instructions look clear and concise. However, if you'd like to enhance the formatting or add more context, you could consider the following:
 
-1.  Fire a command:
+## Installation
 
-```bash
-  npx rakib-react-app
-```
+1. Open your terminal and run the following command to create a new React app using `npx`:
+
+    ```bash
+    npx rakib-react-app
+    ```
+
+This command will initiate the setup process for your new React app.
+
+2. Follow the prompts to give a name to your project and customize any other configuration options. For example:
+
+    ```bash
+    ? Enter your new project's name: my-awesome-react-app
+    ```
+
+    Answer the questions to tailor the setup to your preferences.
+
+3. Once the setup is complete, navigate to your project directory:
+
+    ```bash
+    cd my-awesome-react-app
+    ```
+
+4. Install your dependencies:
+
+    ```bash
+     npm install
+    ```
+
+    OR
+
+    ```bash
+    yarn
+    ```
+
+5. Start your dev server:
+
+    ```bash
+    yarn dev or npm run dev
+    ```
+
+    Now you're ready to start building your React app!
 
 ## License
 
