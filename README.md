@@ -55,7 +55,7 @@ Your installation instructions look clear and concise. However, if you'd like to
 2. Follow the prompts to give a name to your project and customize any other configuration options. For example:
 
     ```bash
-    ? Enter your new project's name: my-awesome-react-app
+    ? "Enter your new project's name:" my-awesome-react-app
     ```
 
     Answer the questions to tailor the setup to your preferences.
