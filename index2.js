@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import chalk from "chalk";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";

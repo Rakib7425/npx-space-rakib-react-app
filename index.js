@@ -6,6 +6,7 @@ import { dirname, join } from "path";
 import inquirer from "inquirer";
 import chalk from "chalk";
 import fs from "fs";
+import { setInterval } from "timers";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -20,7 +21,7 @@ const questions = [
 ];
 
 inquirer.prompt(questions).then((answers) => {
-	console.log("initializing your project... ");
+	console.log(chalk.yellow("initializing your project... "));
 
 	const projectPath = process.cwd();
 
@@ -32,7 +33,13 @@ inquirer.prompt(questions).then((answers) => {
 
 	const gitRepositoryUrl = "https://github.com/Rakib7425/rakib-react-setup";
 
+	let time = 1;
 	console.log(chalk.green("Fetching files...!"));
+
+	const timer = setInterval(() => {
+		console.log(chalk.green(`Fetching files..${time}`));
+		time++;
+	}, 800);
 
 	// Git clone command
 	const gitCloneCommand = `git clone ${gitRepositoryUrl} ${projectPath}/${answers.projectName}`;
@@ -70,7 +77,7 @@ inquirer.prompt(questions).then((answers) => {
 	// delete .git folder from user's directory
 	const deleteFolderRecursive = function (path) {
 		if (fs.existsSync(path)) {
-			fs.readdirSync(path).forEach(function (file, index) {
+			fs.readdirSync(path).forEach(function (file) {
 				let curPath = path + "/" + file;
 				if (fs.lstatSync(curPath).isDirectory()) {
 					// recurse
@@ -96,6 +103,9 @@ inquirer.prompt(questions).then((answers) => {
 			const gitDirectoryPath = `${projectPath}/${answers.projectName}/.git`;
 			// delete .git folder from user's directory
 			deleteFolderRecursive(gitDirectoryPath);
+
+			// Stop Timer
+			clearInterval(timer);
 
 			// If we reach this point, consider it a successful
 			// Log success message
