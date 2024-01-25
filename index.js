@@ -51,7 +51,7 @@ inquirer.prompt(questions).then((answers) => {
 	const successFn = () => {
 		console.log(
 			chalk.green("\nSuccess!") +
-				` Project "${answers.projectName}" created at ${projectPath}/${answers.projectName} \n`
+			` Project "${answers.projectName}" created at ${projectPath}/${answers.projectName} \n`
 		);
 
 		if (answers.projectName !== ".") {
@@ -87,6 +87,7 @@ inquirer.prompt(questions).then((answers) => {
 					fs.unlinkSync(curPath);
 				}
 			});
+
 			fs.rmdirSync(path);
 		}
 	};
