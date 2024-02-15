@@ -27,8 +27,7 @@ inquirer.prompt(questions).then((answers) => {
 
 	if (fs.existsSync(projectPath) == join(__dirname, answers.projectName)) {
 		console.error(chalk.red(`Error: The directory "${answers.projectName}" already exists.`));
-
-		process.exit(1);
+		return process.exit(1);
 	}
 
 	const gitRepositoryUrl = "https://github.com/Rakib7425/rakib-react-setup";
@@ -74,6 +73,7 @@ inquirer.prompt(questions).then((answers) => {
 		);
 		console.log(chalk.green(" !! Enjoy !! \n"));
 	};
+
 	// delete .git folder from user's directory
 	const deleteFolderRecursive = function (path) {
 		if (fs.existsSync(path)) {
@@ -97,7 +97,9 @@ inquirer.prompt(questions).then((answers) => {
 		if (error) {
 			console.error(chalk.red(`Error cloning repository: ${error?.message}`));
 
-			return;
+			// Stop Timer
+			clearInterval(timer);
+			return process.exit(1);
 		}
 
 		if (stderr) {
@@ -116,9 +118,9 @@ inquirer.prompt(questions).then((answers) => {
 
 		if (stdout.trim() === "") {
 			console.error(chalk.red("Error: Unexpected output from Clone command."));
+			clearInterval(timer);
 			return;
 		}
 
-		// successFn();
 	});
 });
