@@ -80,7 +80,7 @@ inquirer.prompt(questions).then((answers) => {
 			fs.readdirSync(path).forEach(function (file) {
 				let curPath = path + "/" + file;
 				if (fs.lstatSync(curPath).isDirectory()) {
-					// recurse
+					// recurse.
 					deleteFolderRecursive(curPath);
 				} else {
 					// delete file
